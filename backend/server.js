@@ -18,10 +18,10 @@ app.use(express.json()); // parsing body
 app.use('/', cors()); // Enabling CORS for all / routes
 // app.use(require('./router'));    // Registering all app-routers here
 
-
-
 app.use('/api/file', fileRoutes);
 const __dirname = path.resolve()
+
+app.use(express.static(path.join(__dirname, 'pdf'))); 
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/frontend/build')))
